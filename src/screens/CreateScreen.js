@@ -1,24 +1,20 @@
-import React, { useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useContext, useState } from "react";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 import { Context } from "../context/BlogContext";
 
 const CreateScreen = ({ navigation }) => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   return (
     <View>
-      <Text>Create</Text>
+      <Text>Enter Title:</Text>
+      <TextInput value={title} onChange={(text) => setTitle(text)} />
+      <Text>Enter Content:</Text>
+      <TextInput value={content} onChange={(text) => setContent(text)} />
     </View>
   );
 };
 const styles = StyleSheet.create({});
 
 export default CreateScreen;
-
-/**
- *   return {
-    headerRight: () => (
-      <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-        <Feather name="plus" size={30} />
-      </TouchableOpacity>
-    ),
-  };
- */
