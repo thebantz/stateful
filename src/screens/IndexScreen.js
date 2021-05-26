@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Context } from "../context/BlogContext";
-import { Ionicons, Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation }) => {
   const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+
   return (
     <View>
-      <Text>IndexScreen</Text>
       <Button title="Add Post" onPress={addBlogPost} />
       <FlatList
         data={state}
@@ -29,13 +29,13 @@ const IndexScreen = ({ navigation }) => {
                   {item.title} - {item.id}
                 </Text>
                 <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                  <Ionicons name="trash-outline" style={styles.icon} />
+                  <Feather style={styles.icon} name="trash" />
                 </TouchableOpacity>
               </View>
             </TouchableOpacity>
           );
         }}
-      ></FlatList>
+      />
     </View>
   );
 };
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 10,
     borderTopWidth: 1,
-    borderColor: "red",
+    borderColor: "gray",
   },
   title: {
     fontSize: 18,
