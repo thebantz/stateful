@@ -11,7 +11,7 @@ import { Context } from "../context/BlogContext";
 import { Ionicons } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation }) => {
-  const { state, addBlogPost } = useContext(Context);
+  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
   return (
     <View>
       <Text>IndexScreen</Text>
@@ -25,7 +25,7 @@ const IndexScreen = ({ navigation }) => {
               <Text style={styles.title}>
                 {item.title} - {item.id}
               </Text>
-              <TouchableOpacity onPress={() => console.log(item.id)}>
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
                 <Ionicons name="trash-outline" style={styles.icon} />
               </TouchableOpacity>
             </View>
