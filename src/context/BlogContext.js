@@ -26,7 +26,6 @@ const getBlogPosts = (dispatch) => {
 
 const addBlogPost = (dispatch) => {
   return async (title, content, callback) => {
-    // dispatch({ type: "add_blogpost", payload: { title, content } });
     await jsonServer.post("/blogposts", { title, content });
     if (callback) {
       callback();
@@ -41,7 +40,8 @@ const deleteBlogPost = (dispatch) => {
 };
 
 const editBlogPost = (dispatch) => {
-  return (id, title, content, callback) => {
+  return async (id, title, content, callback) => {
+    await jsonServer.put(`/blogposts/${id}`, { title, content });
     dispatch({
       type: "edit_blogpost",
       payload: { id, title, content },
